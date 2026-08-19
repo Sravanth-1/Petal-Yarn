@@ -7,7 +7,8 @@ import {
     FaEnvelope,
     FaLock,
     FaArrowRight,
-    FaCheckCircle
+    FaCheckCircle,
+    FaShieldAlt
 } from 'react-icons/fa';
 
 const Register = () => {
@@ -47,9 +48,7 @@ const Register = () => {
         <div className="min-h-[calc(100vh-80px)] bg-[#fff9fb] flex items-center justify-center px-4 py-12 relative overflow-hidden">
 
             {/* Decorative background */}
-
             <div className="absolute -top-32 -right-32 w-80 h-80 bg-[#f9d6e3] rounded-full opacity-60"></div>
-
             <div className="absolute -bottom-40 -left-32 w-96 h-96 bg-[#fce8ef] rounded-full opacity-70"></div>
 
             <div className="absolute top-24 left-[12%] text-pink-200 text-2xl rotate-12">
@@ -60,37 +59,26 @@ const Register = () => {
                 ✦
             </div>
 
-
             {/* Main Card */}
-
             <div className="relative w-full max-w-5xl bg-white rounded-[2rem] shadow-xl border border-pink-100 overflow-hidden">
 
                 <div className="grid md:grid-cols-2">
 
-
-                    {/* ================= LEFT SIDE ================= */}
-
+                    {/* LEFT SIDE */}
                     <div className="hidden md:flex relative bg-[#fff0f5] p-12 flex-col justify-between overflow-hidden">
 
                         <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#f7cfdd] rounded-full opacity-60"></div>
-
                         <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-[#fce0e9] rounded-full opacity-70"></div>
 
-
                         {/* Logo */}
-
                         <div className="relative z-10">
-
                             <div className="inline-flex items-center gap-2 bg-white/80 px-4 py-2 rounded-full text-[#c66d8b] text-sm font-bold border border-pink-100">
                                 <FaHeart className="text-pink-400" />
                                 Petal & Yarn
                             </div>
-
                         </div>
 
-
                         {/* Illustration */}
-
                         <div className="relative z-10 text-center">
 
                             <div className="relative w-64 h-64 mx-auto mb-8">
@@ -100,7 +88,6 @@ const Register = () => {
                                 <div className="absolute inset-5 rounded-full bg-[#fff8fa] flex items-center justify-center">
 
                                     <div className="text-center">
-
                                         <div className="text-7xl mb-3">
                                             🌸
                                         </div>
@@ -110,7 +97,6 @@ const Register = () => {
                                             <span>♡</span>
                                             <span>♡</span>
                                         </div>
-
                                     </div>
 
                                 </div>
@@ -125,7 +111,6 @@ const Register = () => {
 
                             </div>
 
-
                             <h2 className="text-3xl font-black text-[#513a45] leading-tight">
                                 A little corner
                                 <br />
@@ -139,43 +124,32 @@ const Register = () => {
 
                         </div>
 
-
                         <div className="relative z-10 text-center">
-
                             <p className="text-xs text-[#bd8d9e]">
                                 Yarn • Flowers • Love • Tiny stitches ♡
                             </p>
-
                         </div>
 
                     </div>
 
-
-                    {/* ================= RIGHT SIDE ================= */}
-
+                    {/* RIGHT SIDE */}
                     <div className="p-7 sm:p-10 lg:p-14">
 
                         {/* Mobile logo */}
-
                         <div className="md:hidden text-center mb-8">
-
                             <div className="inline-flex items-center gap-2 text-[#c66d8b] font-black text-xl">
                                 <span className="text-2xl">
                                     🌸
                                 </span>
-
                                 Petal & Yarn
                             </div>
-
                         </div>
 
-
                         {/* Heading */}
-
                         <div className="mb-8">
 
                             <div className="w-12 h-12 rounded-2xl bg-[#fff0f5] text-[#d47797] flex items-center justify-center text-lg mb-5">
-                                {showOTP ? '✉' : <FaHeart />}
+                                {showOTP ? <FaShieldAlt /> : <FaHeart />}
                             </div>
 
                             <h1 className="text-3xl sm:text-4xl font-black text-[#4c3741]">
@@ -185,22 +159,16 @@ const Register = () => {
                             </h1>
 
                             <p className="text-[#947782] mt-2 leading-relaxed">
-
                                 {showOTP
-                                    ? 'Just verify your email and your cozy corner will be ready.'
+                                    ? 'One tiny step and your cozy corner will be ready.'
                                     : 'Join Petal & Yarn and find your next handmade favorite.'}
-
                             </p>
 
                         </div>
 
-
                         {/* Error */}
-
                         {error && (
-
                             <div className="mb-6 bg-[#fff4f5] border border-[#f5d5dc] rounded-2xl p-4">
-
                                 <div className="flex items-start gap-3">
 
                                     <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#d47797] shrink-0">
@@ -212,30 +180,20 @@ const Register = () => {
                                     </p>
 
                                 </div>
-
                             </div>
-
                         )}
 
-
-                        <form
-                            onSubmit={handleSubmit}
-                            className="space-y-5"
-                        >
+                        <form onSubmit={handleSubmit} className="space-y-5">
 
                             {!showOTP ? (
                                 <>
-
                                     {/* Name */}
-
                                     <div>
-
                                         <label className="block text-sm font-bold text-[#634650] mb-2">
                                             Your name
                                         </label>
 
                                         <div className="relative">
-
                                             <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-[#d29aaa]" />
 
                                             <input
@@ -244,26 +202,18 @@ const Register = () => {
                                                 placeholder="What should we call you?"
                                                 className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-[#efd9e0] bg-[#fffdfd] text-[#513c46] placeholder-[#bba3ac] focus:outline-none focus:ring-4 focus:ring-pink-100 focus:border-[#df91aa] transition"
                                                 value={name}
-                                                onChange={(e) =>
-                                                    setName(e.target.value)
-                                                }
+                                                onChange={(e) => setName(e.target.value)}
                                             />
-
                                         </div>
-
                                     </div>
 
-
                                     {/* Email */}
-
                                     <div>
-
                                         <label className="block text-sm font-bold text-[#634650] mb-2">
                                             Email address
                                         </label>
 
                                         <div className="relative">
-
                                             <FaEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-[#d29aaa]" />
 
                                             <input
@@ -272,26 +222,18 @@ const Register = () => {
                                                 placeholder="you@example.com"
                                                 className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-[#efd9e0] bg-[#fffdfd] text-[#513c46] placeholder-[#bba3ac] focus:outline-none focus:ring-4 focus:ring-pink-100 focus:border-[#df91aa] transition"
                                                 value={email}
-                                                onChange={(e) =>
-                                                    setEmail(e.target.value)
-                                                }
+                                                onChange={(e) => setEmail(e.target.value)}
                                             />
-
                                         </div>
-
                                     </div>
 
-
                                     {/* Password */}
-
                                     <div>
-
                                         <label className="block text-sm font-bold text-[#634650] mb-2">
                                             Create a password
                                         </label>
 
                                         <div className="relative">
-
                                             <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#d29aaa]" />
 
                                             <input
@@ -300,74 +242,96 @@ const Register = () => {
                                                 placeholder="Choose a password"
                                                 className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-[#efd9e0] bg-[#fffdfd] text-[#513c46] placeholder-[#bba3ac] focus:outline-none focus:ring-4 focus:ring-pink-100 focus:border-[#df91aa] transition"
                                                 value={password}
-                                                onChange={(e) =>
-                                                    setPassword(e.target.value)
-                                                }
+                                                onChange={(e) => setPassword(e.target.value)}
                                             />
-
                                         </div>
-
                                     </div>
-
                                 </>
                             ) : (
 
                                 /* OTP */
-
                                 <div>
 
-                                    <div className="bg-[#fff7f9] border border-pink-100 rounded-2xl p-5 mb-5">
+                                    {/* Email Sent Card */}
+                                    <div className="relative bg-gradient-to-br from-[#fff5f8] to-[#fffafd] border border-pink-100 rounded-2xl p-5 mb-5 overflow-hidden">
 
-                                        <div className="flex items-center gap-3">
+                                        <div className="absolute -right-5 -top-5 w-20 h-20 bg-pink-100 rounded-full opacity-50"></div>
 
-                                            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#d47797] shadow-sm">
-                                                ✉
+                                        <div className="relative flex items-start gap-4">
+
+                                            <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center text-[#d47797] shadow-sm shrink-0">
+                                                <FaEnvelope />
                                             </div>
 
                                             <div>
-
                                                 <p className="font-bold text-[#5b414b] text-sm">
                                                     Check your email ♡
                                                 </p>
 
-                                                <p className="text-xs text-[#9b7b86] mt-1">
-                                                    Your verification code is waiting for you.
+                                                <p className="text-xs text-[#9b7b86] mt-1 leading-relaxed">
+                                                    We sent a 6-digit verification code to
+                                                    <span className="font-semibold text-[#c56888]">
+                                                        {' '}{email}
+                                                    </span>
                                                 </p>
-
                                             </div>
 
                                         </div>
 
                                     </div>
 
+                                    {/* Spam Notice */}
+                                    <div className="flex items-start gap-3 bg-[#fffaf0] border border-[#f5e5c5] rounded-xl px-4 py-3.5 mb-6">
 
+                                        <span className="text-lg mt-0.5">
+                                            💌
+                                        </span>
+
+                                        <p className="text-xs text-[#8d7658] leading-relaxed">
+                                            <span className="font-bold text-[#765f43]">
+                                                Can't find it?
+                                            </span>{' '}
+                                            Please check your
+                                            <span className="font-bold">
+                                                {' '}Spam or Junk folder
+                                            </span>{' '}
+                                            too. Sometimes our little emails get cozy there. ♡
+                                        </p>
+
+                                    </div>
+
+                                    {/* OTP Label */}
                                     <label className="block text-sm font-bold text-[#634650] mb-2">
                                         Verification code
                                     </label>
 
-                                    <input
-                                        type="text"
-                                        required
-                                        placeholder="• • • • • •"
-                                        className="w-full px-4 py-5 rounded-xl border border-[#efd9e0] bg-[#fffdfd] text-[#513c46] focus:outline-none focus:ring-4 focus:ring-pink-100 focus:border-[#df91aa] transition font-black tracking-[0.6em] text-center text-xl"
-                                        value={otp}
-                                        onChange={(e) =>
-                                            setOtp(e.target.value)
-                                        }
-                                        maxLength="6"
-                                    />
+                                    {/* OTP Input */}
+                                    <div className="relative">
+
+                                        <input
+                                            type="text"
+                                            inputMode="numeric"
+                                            autoComplete="one-time-code"
+                                            required
+                                            placeholder="• • • • • •"
+                                            className="w-full px-4 py-5 rounded-xl border border-[#efd9e0] bg-[#fffdfd] text-[#513c46] focus:outline-none focus:ring-4 focus:ring-pink-100 focus:border-[#df91aa] transition font-black tracking-[0.6em] text-center text-xl"
+                                            value={otp}
+                                            onChange={(e) =>
+                                                setOtp(e.target.value.replace(/\D/g, ''))
+                                            }
+                                            maxLength="6"
+                                        />
+
+                                    </div>
 
                                     <p className="text-xs text-center text-[#a68b95] mt-3">
-                                        Enter the 6-digit code from your email.
+                                        Enter the 6-digit code from your email ♡
                                     </p>
 
                                 </div>
-
                             )}
 
-
                             {/* Submit */}
-
                             <button
                                 type="submit"
                                 disabled={loading}
@@ -380,7 +344,9 @@ const Register = () => {
                                             🧶
                                         </span>
 
-                                        Making things cozy...
+                                        {showOTP
+                                            ? 'Checking your code...'
+                                            : 'Making things cozy...'}
                                     </>
                                 ) : (
                                     <>
@@ -396,11 +362,8 @@ const Register = () => {
 
                         </form>
 
-
                         {/* Benefits */}
-
                         {!showOTP && (
-
                             <div className="mt-7 pt-6 border-t border-pink-50">
 
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -423,18 +386,13 @@ const Register = () => {
                                 </div>
 
                             </div>
-
                         )}
 
-
                         {/* Login */}
-
                         {!showOTP && (
-
                             <div className="text-center mt-8">
 
                                 <p className="text-sm text-[#967782]">
-
                                     Already part of our cozy corner?{' '}
 
                                     <Link
@@ -447,7 +405,6 @@ const Register = () => {
                                 </p>
 
                             </div>
-
                         )}
 
                     </div>
