@@ -1,24 +1,22 @@
-const { Resend } = require('resend');
+const sgMail = require('@sendgrid/mail');
 
 require('dotenv').config();
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// Resend's testing sender.
-// For production, we'll replace this with your verified domain later.
-const FROM_EMAIL = 'onboarding@resend.dev';
+const FROM_EMAIL = process.env.EMAIL_FROM;
 
 const sendBookingEmail = async (userEmail, userName, eventTitle) => {
     try {
-        const { data, error } = await resend.emails.send({
+        await sgMail.send({
+            to: userEmail,
             from: FROM_EMAIL,
-            to: [userEmail],
             subject: `Booking Confirmed: ${eventTitle}`,
             html: `
                 <div style="
                     font-family: Arial, sans-serif;
                     padding: 30px;
-                    background-color: #fff7fb;
+                    background: #fff7fb;
                 ">
                     <div style="
                         max-width: 550px;
@@ -45,17 +43,12 @@ const sendBookingEmail = async (userEmail, userName, eventTitle) => {
             `
         });
 
-        if (error) {
-            console.error('Error sending booking email:', error);
-            return;
-        }
-
-        console.log(
-            'Booking email sent successfully:',
-            data?.id
-        );
+        console.log('Booking email sent successfully to', userEmail);
     } catch (error) {
-        console.error('Error sending booking email:', error);
+        console.error(
+            'Error sending booking email:',
+            error.response?.body || error.message
+        );
     }
 };
 
@@ -71,20 +64,20 @@ const sendOTPEmail = async (userEmail, otp, type) => {
                 ? 'Please use the following OTP to verify your new Petal & Yarn account.'
                 : 'Please use the following OTP to verify and confirm your booking.';
 
-        const { data, error } = await resend.emails.send({
+        await sgMail.send({
+            to: userEmail,
             from: FROM_EMAIL,
-            to: [userEmail],
             subject: title,
             html: `
                 <div style="
                     font-family: Arial, sans-serif;
                     text-align: center;
                     padding: 30px;
-                    background-color: #fff7fb;
+                    background: #fff7fb;
                 ">
                     <div style="
                         max-width: 500px;
-                        margin: 0 auto;
+                        margin: auto;
                         background: white;
                         padding: 30px;
                         border-radius: 20px;
@@ -133,17 +126,12 @@ const sendOTPEmail = async (userEmail, otp, type) => {
             `
         });
 
-        if (error) {
-            console.error('Error sending OTP email:', error);
-            return;
-        }
-
-        console.log(
-            `OTP sent to ${userEmail} for ${type}:`,
-            data?.id
-        );
+        console.log(`OTP sent to ${userEmail} for ${type}`);
     } catch (error) {
-        console.error('Error sending OTP email:', error);
+        console.error(
+            'Error sending OTP email:',
+            error.response?.body || error.message
+        );
     }
 };
 
